@@ -8,7 +8,12 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 
-## Imagination テーブル
+### Association
+
+- has_many :room_imagination
+
+
+## imagination テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
@@ -18,6 +23,10 @@
 | input_text2   | string    | 入力された言葉2    |
 | generated_imagination| TEXT      | 生成されたジョーク |
 
+### Association
+
+- belongs_to :user
+
 
 ## imagination_users テーブル
 
@@ -25,3 +34,8 @@
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
 | imagination   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :imagination
