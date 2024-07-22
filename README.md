@@ -1,24 +1,27 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| name               | string | null: false |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false |
 
-* Ruby version
+## Imagination テーブル
 
-* System dependencies
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| user_id       | references| ユーザーID（外部キー）|
+| category_id   | integer   | プルダウンから選択された分野     |
+| input_text1   | string    | 入力された言葉1    |
+| input_text2   | string    | 入力された言葉2    |
+| generated_imagination| TEXT      | 生成されたジョーク |
 
-* Configuration
 
-* Database creation
+## imagination_users テーブル
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| imagination   | references | null: false, foreign_key: true |
