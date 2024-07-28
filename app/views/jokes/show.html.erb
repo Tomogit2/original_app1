@@ -1,0 +1,5 @@
+<h1>Generated Imagination</h1>
+   <p><%= @joke.response %></p>
+   <% if @joke.image_url.present? %>
+     <img src="<%= @joke.image_url %>" alt="Generated Image">
+   <% end %>

@@ -72,3 +72,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'ruby-openai'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'http'
+gem 'faraday'

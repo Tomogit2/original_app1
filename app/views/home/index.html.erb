@@ -28,3 +28,29 @@
   </main>
 </body>
 </html>
+   <%= form_with model: @joke, local: true do |form| %>
+     <div class="field">
+       <%= form.label :topic %>
+       <%= form.select :topic, options_for_select(['Physics', 'Chemistry', 'Biology', 'Mathematics']) %>
+     </div>
+
+     <div class="field">
+       <%= form.label :input1 %>
+       <%= form.text_field :input1 %>
+     </div>
+
+     <div class="field">
+       <%= form.label :input2 %>
+       <%= form.text_field :input2 %>
+     </div>
+
+     <div class="actions">
+       <%= form.submit %>
+     </div>
+   <% end %>
+
+   <%= form_with url: generate_joke_path, method: :post, local: true do |form| %>
+  <%= form.label :input_text, "ジョークのお題" %>
+  <%= form.text_field :input_text %>
+  <%= form.submit "生成" %>
+<% end %>
