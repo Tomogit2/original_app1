@@ -10,18 +10,8 @@
   <%= csp_meta_tag %>
 </head>
 <body>
-  <header>
-    <nav>
-      <% if user_signed_in? %>
-        <span>こんにちは、<%= current_user.nickname %>さん</span>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'ログイン', new_user_session_path %>
-        <%= link_to '新規登録', new_user_registration_path %>
-      <% end %>
-    </nav>
-  </header>
-
+  <%= render "shared/header" %>
+  
   <main>
     <h1>ホーム画面</h1>
 

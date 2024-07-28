@@ -55,25 +55,6 @@ body {
   outline: none;
 }
 
-.actions {
-  text-align: center;
-}
-
-.actions button {
-  background-color: #3945f1;
-  color: #fff;
-  padding: 1em 2em;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 1.5em;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.actions button:hover {
-  background-color: #f397eb;
-}
-
 ruby {
   font-size: 0.8em;
 }
