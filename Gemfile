@@ -76,3 +76,4 @@ gem 'ruby-openai'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'http'
 gem 'faraday'
+gem 'active_hash'

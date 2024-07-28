@@ -28,7 +28,7 @@
  <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
       <div class="field">
         <%= form.label :category_id, "分野" %>
-        <%= form.select :category_id, options_for_select([['Physics', 1], ['Chemistry', 2], ['Biology', 3], ['Mathematics', 4]]) %>
+        <%= form.collection_select :category_id, Category.all, :id, :name %>
       </div>
 
       <div class="field">
@@ -49,14 +49,11 @@
     <% if @jokes.any? %>
       <ul>
         <% @jokes.each do |joke| %>
-          <li class='list'>
-            <div class='joke-content'>
-              <h3>分野: <%= joke.category_id %></h3>
-              <p>言葉1: <%= joke.input_text1 %></p>
-              <p>言葉2: <%= joke.input_text2 %></p>
-              <%= image_tag joke.generated_image_url if joke.generated_image_url.present? %>
-              <p>生成されたジョーク: <%= joke.generated_joke %></p>
-            </div>
+          <li>
+            <p><%= joke.generated_joke %></p>
+            <% if joke.generated_image_url.present? %>
+              <%= image_tag joke.generated_image_url, alt: "Generated Image" %>
+            <% end %>
           </li>
         <% end %>
       </ul>
