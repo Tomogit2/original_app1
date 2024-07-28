@@ -1,71 +1,70 @@
 class JokesController < ApplicationController
-  require 'openai'
-  require 'http'
+  before_action :authenticate_user!, only: [:create]
 
   def create
-    client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-
-    response = client.chat(
-        parameters: {
-          model: "gpt-3.5-turbo",
-          messages: [
-            { role: "", content: ""
-                    ],
-          tempe
-
-    response = client.completions(
-      engine: 'text-davinci-003',
-      prompt: params[:input_text],
-      max_tokens: 150
-    )
-
-    @joke = response['choices'].first['text']
-    render json: { joke: @joke }
-
-    @generated_text = response.dig("choices", 0, "message", "content")
+    @joke = current_user.jokes.build(joke_params)
+    if @joke.save
+      joke_text = generate_joke(@joke.category_id, @joke.input_text1, @joke.input_text2)
     
+      if joke_text
+        image_url = generate_image(joke_text)
+
+        if image_url
+            @joke.update(generated_joke: joke_text, generated_image_url: image_url)
+
+        redirect_to root_path, notice: 'ジョークが生成されました。'
+      else
+        @joke.destroy
+        @jokes = Joke.all
+        flash.now[:alert] = '画像の生成に失敗しました。'
+        render 'home/index'
+      end
+    else
+      @joke.destroy
+      @jokes = Joke.all
+      flash.now[:alert] = 'ジョークの生成に失敗しました。'
+      render 'home/index'
+    end
+  else
+    @jokes = Joke.all
+    render 'home/index'
   end
 end
-
-def new
-    @joke = Joke.new
-  end
-
-  def create
-    @joke = Joke.new(joke_params)
-    if @joke.save
-      response = generate_joke(@joke)
-      @joke.update(response: response)
-      generate_image(@joke)
-      redirect_to @joke
-    else
-      render :new
-    end
-  end
-
-  def show
-    @joke = Joke.find(params[:id])
-  end
 
   private
 
   def joke_params
-    params.require(:joke).permit(:topic, :input1, :input2)
+    params.require(:joke).permit(:category_id, :input_text1, :input_text2)
   end
 
-  def generate_joke(joke)
-    prompt = "理系的なジョークが面白いと感じるのですが、『#{joke.topic}』『#{joke.input1}』、『#{joke.input2}』をお題に何かダジャレや面白いことをお嬢様口調で 1つ言ってください。"
-    response = HTTP.post("https://api.openai.com/v1/engines/davinci-codex/completions", 
-                          headers: { "Authorization" => "Bearer YOUR_OPENAI_API_KEY" },
-                          json: { prompt: prompt, max_tokens: 100 })
-    JSON.parse(response.body)["choices"][0]["text"]
+  def generate_joke(category_id, input_text1, input_text2)
+
+    begin
+      # OpenAIのAPIを使ってジョークを生成
+      response = OpenAI::Completion.create(
+        engine: 'davinci-codex',
+        prompt: "Create a science joke with the following words: #{input_text1}, #{input_text2}",
+        max_tokens: 50
+      )
+      response.choices.first.text.strip
+    rescue => e
+      Rails.logger.error("ジョーク生成エラー: #{e.message}")
+      nil
+    end
   end
 
-  def generate_image(joke)
-    prompt = joke.response
-    response = HTTP.post("https://api.openai.com/v1/images/generations",
-                         headers: { "Authorization" => "Bearer YOUR_OPENAI_API_KEY" },
-                         json: { prompt: prompt, n: 1, size: "512x512" })
-    joke.update(image_url: JSON.parse(response.body)["data"][0]["url"])
+  def generate_image(joke_text)
+    begin
+      # DALL-Eなどの画像生成APIを使って画像を生成
+      response = OpenAI::Image.create(
+        prompt: joke_text,
+        n: 1,
+        size: '256x256'
+      )
+      response.data.first.url
+    rescue => e
+      Rails.logger.error("画像生成エラー: #{e.message}")
+      nil
+    end
   end
 end

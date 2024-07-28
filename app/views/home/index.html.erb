@@ -25,32 +25,42 @@
   <main>
     <h1>ホーム画面</h1>
 
+ <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
+      <div class="field">
+        <%= form.label :category_id, "分野" %>
+        <%= form.select :category_id, options_for_select([['Physics', 1], ['Chemistry', 2], ['Biology', 3], ['Mathematics', 4]]) %>
+      </div>
+
+      <div class="field">
+        <%= form.label :input_text1, "言葉1" %>
+        <%= form.text_field :input_text1 %>
+      </div>
+
+      <div class="field">
+        <%= form.label :input_text2, "言葉2" %>
+        <%= form.text_field :input_text2 %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "生成" %>
+      </div>
+    <% end %>
+
+    <% if @jokes.any? %>
+      <ul>
+        <% @jokes.each do |joke| %>
+          <li class='list'>
+            <div class='joke-content'>
+              <h3>分野: <%= joke.category_id %></h3>
+              <p>言葉1: <%= joke.input_text1 %></p>
+              <p>言葉2: <%= joke.input_text2 %></p>
+              <%= image_tag joke.generated_image_url if joke.generated_image_url.present? %>
+              <p>生成されたジョーク: <%= joke.generated_joke %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </main>
 </body>
 </html>
-   <%= form_with model: @joke, local: true do |form| %>
-     <div class="field">
-       <%= form.label :topic %>
-       <%= form.select :topic, options_for_select(['Physics', 'Chemistry', 'Biology', 'Mathematics']) %>
-     </div>
-
-     <div class="field">
-       <%= form.label :input1 %>
-       <%= form.text_field :input1 %>
-     </div>
-
-     <div class="field">
-       <%= form.label :input2 %>
-       <%= form.text_field :input2 %>
-     </div>
-
-     <div class="actions">
-       <%= form.submit %>
-     </div>
-   <% end %>
-
-   <%= form_with url: generate_joke_path, method: :post, local: true do |form| %>
-  <%= form.label :input_text, "ジョークのお題" %>
-  <%= form.text_field :input_text %>
-  <%= form.submit "生成" %>
-<% end %>
