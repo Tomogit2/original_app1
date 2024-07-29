@@ -5,17 +5,16 @@ class JokesController < ApplicationController
     @joke = current_user.jokes.build(joke_params)
     if @joke.save
       joke_text = generate_joke(@joke.category.name, @joke.input_text1, @joke.input_text2)
-
+      if joke_text
+        AiJoke.create(user: current_user, joke: @joke, generated_joke: joke_text)
       else
         @joke.destroy
-        @jokes = Joke.all
         flash.now[:alert] = 'ジョークの生成に失敗しました。'
-        render 'home/index'
       end
-    else
-      @jokes = Joke.all
-      render 'home/index'
     end
+    @jokes = Joke.all
+    @ai_jokes = AiJoke.all
+    render 'home/index'
   end
 
   private
@@ -27,16 +26,19 @@ class JokesController < ApplicationController
   def generate_joke(category, input_text1, input_text2)
     client = OpenAI::Client.new
 
-    response = client.completions(
-        parameters: {
+    response = client.chat(
+      parameters: {
         model: 'gpt-4o-mini',
-        prompt: "Create a science joke in the category #{category} with the following words: #{input_text1}, #{input_text2}",
+        messages: [
+          { role: "system", content: "You are a funny assistant." },
+          { role: "user", content: "Create a science joke in the category #{category} with the following words: #{input_text1}, #{input_text2}" }
+        ],
         max_tokens: 50
       }
     )
 
     if response && response['choices']
-      response['choices'].first['text'].strip
+      response['choices'].first['message']['content'].strip
     else
       Rails.logger.error("ジョーク生成エラー: response: #{response}")
       nil
@@ -45,6 +47,4 @@ class JokesController < ApplicationController
     Rails.logger.error("ジョーク生成エラー: #{e.message}")
     nil
   end
-
-
 end

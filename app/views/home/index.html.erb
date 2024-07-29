@@ -29,12 +29,11 @@
       </div>
     <% end %>
 
-    <% if @jokes.any? %>
+    <% if @ai_jokes.present? %>
       <ul>
-        <% @jokes.each do |joke| %>
+        <% @ai_jokes.each do |ai_joke| %>
           <li>
-            <p><%= joke.generated_joke %></p>
-            <% end %>
+            <p><%= ai_joke.generated_joke %></p>
           </li>
         <% end %>
       </ul>

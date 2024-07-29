@@ -1,6 +1,6 @@
   class HomeController < ApplicationController
   def index
     @joke = Joke.new
-    @jokes = Joke.all
+    @ai_jokes = AiJoke.all
   end
 end
