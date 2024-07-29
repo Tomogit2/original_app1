@@ -34,8 +34,6 @@
         <% @jokes.each do |joke| %>
           <li>
             <p><%= joke.generated_joke %></p>
-            <% if joke.generated_image_url.present? %>
-              <%= image_tag joke.generated_image_url, alt: "Generated Image" %>
             <% end %>
           </li>
         <% end %>
