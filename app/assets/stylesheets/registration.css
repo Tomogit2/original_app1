@@ -10,25 +10,31 @@ body {
 
 .signup-container {
   background: #fff;
-  padding: 5em;
+  padding: 0em 5em 5em 5em;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
-  height: 90vh;
+  height: 95vh; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 10vh 0;
+  justify-content: flex-start;
+  margin: 20vh 0;
 }
 
 .signup-box h2 {
   text-align: center;
-  margin-top: 2em;
+  margin-top: 2.5em;
   margin-bottom: 1em; 
   color: #333;
 }
+
+.registration-to-sessions {
+  position: absolute;
+  top: 20px;
+  right: 200px;
+  }
 
 .field {
   margin-bottom: 1em;
@@ -67,8 +73,16 @@ rt {
 }
 
 .my-link-class {
-  border: 2px solid #afed06;
-  background-color: #22eb07;
+  border: none;
+  background-color: #48e7ed;
   padding: 20px 10px 10px 10px;
   border-radius: 40px;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
 }
+
+.my-link-class:hover {
+  background-color: #aff8e9 !important;
+  transform: scale(1.05) !important;
+}
+  

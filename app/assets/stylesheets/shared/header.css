@@ -41,6 +41,6 @@ nav span {
 }
 
 .logout-button:hover {
-  background-color: #526bd0;
+  background-color: #0eaaec;
   transform: scale(1.05);
 }
