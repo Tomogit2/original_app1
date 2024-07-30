@@ -3,9 +3,12 @@
 <div class="signup-container">
   <div class="signup-box">
     <h2><ruby>新しく登録するお友達<rt>あたら　　とうろく　　　ともだち</rt></ruby></h2>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    
+    <div class="signup-error-messages">
       <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
       <div class="field">
         <%= f.label :nickname, "<ruby>ニックネーム<rt>にっくねーむ</rt></ruby>".html_safe %><br />
