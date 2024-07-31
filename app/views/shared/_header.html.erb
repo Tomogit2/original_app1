@@ -8,7 +8,7 @@
       </li>
       <% if user_signed_in? %>
         <li class="user-info">
-          こんにちは、<%= current_user.nickname %>さん
+             こんにちは、<%= link_to "#{current_user.nickname}さん", user_jokes_path(current_user), class: 'user-link' %>
         </li>
         <li class="logout-item">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-button' %>

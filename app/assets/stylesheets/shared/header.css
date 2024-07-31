@@ -62,6 +62,15 @@ nav li a:hover {
   text-decoration: underline;
 }
 
+.user-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.user-link:hover {
+  text-decoration: underline;
+}
+
 .logout-button {
   background-color: #3945f1;
   color: #fff;
@@ -76,4 +85,8 @@ nav li a:hover {
 .logout-button:hover {
   background-color: #0eaaec;
   transform: scale(1.05);
+}
+
+nav ul li:last-child {
+  margin-right: 0;
 }
