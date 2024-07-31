@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>すきなもの、まぜたらどーなる？</title>
+    <title>すきなもの、まぜて・・・？なつやすみのじゆうけんきゅうアイデアマシーン</title>
+    <%= stylesheet_link_tag 'home', media: 'all' %>
 </head>
 <body>
   <%= render "shared/header" %>  
   <main>
-    <h1>すきなもの、まぜたらどーなる？</h1>
+    <h1>
+      すきなもの、まぜて・・・？
+      <br>
+      <img src="<%= asset_path('suika.png') %>" class="suika-icon" alt="スイカ">
+      <span class="natsuyasumi-text">なつやすみ</span>
+      <img src="<%= asset_path('suika.png') %>" class="suika-icon" alt="スイカ">
+      <span class="natsuyasumi-text">の</span>
+      <span class="rainbow-text">じゆうけんきゅう</span>
+      <span class="natsuyasumi-text">アイデアマシーン</span>      
+    </h1>
 
  <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
       <div class="field">
@@ -33,7 +43,7 @@
       <ul>
         <% @ai_jokes.each do |ai_joke| %>
           <li>
-            <p><%= ai_joke.generated_joke %></p>
+            <p><%= link_to ai_joke.generated_joke, joke_path(ai_joke.joke) %></p>
           </li>
         <% end %>
       </ul>

@@ -1,5 +1,11 @@
 class JokesController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :show]
+  before_action :set_joke, only: [:show, :destroy]
+
+  def index
+    @user = User.find(params[:user_id])
+    @jokes = @user.jokes
+  end
 
   def create
     @joke = current_user.jokes.build(joke_params)
@@ -17,10 +23,18 @@ class JokesController < ApplicationController
     render 'home/index'
   end
 
+  def show
+    @ai_joke = AiJoke.find_by(joke_id: params[:id])
+  end
+
   private
 
   def joke_params
     params.require(:joke).permit(:category_id, :input_text1, :input_text2)
+  end
+
+  def set_joke
+    @joke = Joke.find(params[:id])
   end
 
   def generate_joke(category, input_text1, input_text2)

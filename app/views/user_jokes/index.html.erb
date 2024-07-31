@@ -1,0 +1,11 @@
+<h1><%= @user.nickname %>さんのジョーク一覧</h1>
+
+<ul>
+  <% @jokes.each do |joke| %>
+    <li>
+      <%= link_to joke.generated_joke, joke_path(joke) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'ホームに戻る', root_path %>
