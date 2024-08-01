@@ -1,13 +1,13 @@
 header {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  background-color: #d1f9f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #d1f9f8;
-  padding: 5px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   z-index: 1000;
 }
 
@@ -17,7 +17,9 @@ header {
 
 nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -40,15 +42,11 @@ nav {
 }
 
 .user-info {
-  margin: 0 auto;
-  font-size: 1.2em;
   text-align: center;
+  font-size: 1.2em;
 }
 
-.logout-item {
-  margin-left: auto;
-}
-
+.logout-item,
 .login-item {
   margin-left: auto;
 }
