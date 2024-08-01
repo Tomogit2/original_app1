@@ -1,11 +1,25 @@
-<h1><%= @user.nickname %>さんのジョーク一覧</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ジョーク一覧</title>
+    <%= stylesheet_link_tag 'jokes_index', media: 'all' %>
+</head>
+<body>
+  <%= render "shared/header" %>
+  <main class="main-container">
+    <h1><%= @user.nickname %>さんのジョーク一覧</h1>
 
-<ul>
-  <% @jokes.each do |joke| %>
-    <li>
-      <%= link_to joke.generated_joke, joke_path(joke) %>
-    </li>
-  <% end %>
-</ul>
+    <ul class="joke-list">
+      <% @jokes.each do |joke| %>
+        <li class="joke-item">
+          <h2><%= link_to joke.generated_joke, joke_path(joke) %></h2>
+          <p>作成日時: <%= joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+          <%= link_to '削除', joke_path(joke), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'delete-button' %>
+        </li>
+      <% end %>
+    </ul>
 
-<%= link_to 'ホームに戻る', root_path %>
+    <%= link_to 'ホームに戻る', root_path %>
+  </main>
+</body>
+</html>

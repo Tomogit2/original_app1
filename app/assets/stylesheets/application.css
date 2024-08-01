@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require jokes_show
+ *= require jokes_index
  *= require_self
  *= require login
   *= require home
