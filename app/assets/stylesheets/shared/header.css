@@ -39,11 +39,7 @@ nav {
 
 .banner-img {
   margin-right: auto;
-}
-
-.user-info {
-  text-align: center;
-  font-size: 1.2em;
+  margin-left: 50px;
 }
 
 .logout-item,
@@ -63,16 +59,19 @@ nav li a:hover {
 .user-link {
   text-decoration: none;
   color: #007bff;
+  transition: color 0.3s;
 }
 
 .user-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: red;
 }
 
 .logout-button {
   background-color: #3945f1;
   color: #fff;
   padding: 0.5em 1em;
+  margin-right: 100px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -82,6 +81,7 @@ nav li a:hover {
 
 .logout-button:hover {
   background-color: #0eaaec;
+  text-decoration: none; 
   transform: scale(1.05);
 }
 

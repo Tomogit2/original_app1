@@ -2,33 +2,111 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
-h1 {
+.center-text {
   text-align: center;
-  margin-top: 3em;
 }
 
-.suika-icon {
-  width: 30px;
-  vertical-align: middle;
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 60px 0 60px;
+  height: calc(100vh - 60px);
 }
 
-.rainbow-text {
+.form-container {
+  width: 30%;
+  flex: 0 0 40%;
+  padding: 10px 40px 40px; 
+  background-color: #f9f9f9;
+  border-right: 1px solid #ccc;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+}
+
+.field {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.jokes-container {
+  margin-left: 30%;
+  padding: 20px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.jokes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.joke-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.joke-link {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.joke-link:hover {
+  text-decoration: underline;
+}
+
+.field {
+  margin-bottom: 1em;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.field input,
+.field select  {
+  width: calc(100% - 25px);
+  height: 40px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.actions {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.actions input[type="submit"] {
+  background-color: #3945f1;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
   font-size: 1.5em;
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: rainbow-animation 5s infinite;
+  transition: background-color 0.1s, transform 0.1s;
 }
 
-@keyframes rainbow-animation {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.natsuyasumi-text {
-  font-size: 1em;
-  font-family: 'Impact', sans-serif;
-  color: #280385;
-  text-shadow: 2px 2px 5px #aaa;
+.actions input[type="submit"]:hover {
+  background-color: #0eaaec;
+  transform: scale(1.05);
 }

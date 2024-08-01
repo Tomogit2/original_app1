@@ -6,48 +6,44 @@
 </head>
 <body>
   <%= render "shared/header" %>  
-  <main>
-    <h1>
-      すきなもの、まぜて・・・？
-      <br>
-      <img src="<%= asset_path('suika.png') %>" class="suika-icon" alt="スイカ">
-      <span class="natsuyasumi-text">なつやすみ</span>
-      <img src="<%= asset_path('suika.png') %>" class="suika-icon" alt="スイカ">
-      <span class="natsuyasumi-text">の</span>
-      <span class="rainbow-text">じゆうけんきゅう</span>
-      <span class="natsuyasumi-text">アイデアマシーン</span>      
-    </h1>
+  <main class="main-container">
+    <div class="form-container">
+      <h2 class="center-text">じゆうけんきゅうのアイデアをつくる</h2>
+      <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
+        <div class="field">
+          <%= form.label :category_id, "きみのすきなじかんわりをおしえてね" %>
+          <%= form.collection_select :category_id, Category.all, :id, :name %>
+        </div>
 
- <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
-      <div class="field">
-        <%= form.label :category_id, "分野" %>
-        <%= form.collection_select :category_id, Category.all, :id, :name %>
-      </div>
+        <div class="field">
+          <%= form.label :input_text1, "すきなものをおしえてね" %>
+          <%= form.text_field :input_text1 %>
+        </div>
 
-      <div class="field">
-        <%= form.label :input_text1, "言葉1" %>
-        <%= form.text_field :input_text1 %>
-      </div>
+        <div class="field">
+          <%= form.label :input_text2, "もうひとつすきなものをおしえてね" %>
+          <%= form.text_field :input_text2 %>
+        </div>
 
-      <div class="field">
-        <%= form.label :input_text2, "言葉2" %>
-        <%= form.text_field :input_text2 %>
-      </div>
+        <div class="actions">
+          <%= form.submit "じゆうけんきゅうのアイデアをつくる" %>
+        </div>
+      <% end %>
+    </div>
 
-      <div class="actions">
-        <%= form.submit "生成" %>
-      </div>
-    <% end %>
-
-    <% if @ai_jokes.present? %>
-      <ul>
-        <% @ai_jokes.each do |ai_joke| %>
-          <li>
-            <p><%= link_to ai_joke.generated_joke, joke_path(ai_joke.joke) %></p>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div class="jokes-container">
+      <h2>つくったじゆうけんきゅうのアイデア</h2>
+      <% if @ai_jokes.present? %>
+        <ul class="jokes-list">
+          <% @ai_jokes.each do |ai_joke| %>
+            <li class="joke-item">
+              <p><%= ai_joke.generated_joke %></p>
+              <%= link_to 'くわしくみる', joke_path(ai_joke.joke), class: 'joke-link' %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </main>
 </body>
 </html>
