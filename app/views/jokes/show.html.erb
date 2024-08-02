@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ジョーク詳細</title>
+    <title>つくったじゆうけんきゅうのアイデア詳細</title>
     <%= stylesheet_link_tag 'jokes_show', media: 'all' %>
 </head>
 <body>
@@ -9,22 +9,22 @@
   <main>
 <div class="joke-detail-container">
   <div class="joke-frame">
-    <h1>作ったジョーク</h1>
+    <h1>つくったじゆうけんきゅうのアイデア</h1>
     <p><%= @ai_joke.generated_joke %></p>
   </div>
 
   <div class="joke-actions">
-<%= link_to '削除', joke_path(@joke), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, class: 'dropdown-button' %>
+<%= link_to 'けす', joke_path(@joke), data: { turbo_method: :delete, confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
   </div>
 
   <div class="joke-info">
-    <p><strong>作った日時:</strong> <%= @joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-    <p><strong>作った人:</strong> <%= link_to @joke.user.nickname, user_jokes_path(@joke.user), class: 'user-link' %></p>
+    <p><strong>つくったとき:</strong> <%= @joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p><strong>つくったひと:</strong> <%= link_to "#{@joke.user.nickname}さん", user_jokes_path(@joke.user), class: 'user-link' %></p>
     <p><strong>まぜたもの:</strong> <%= @joke.input_text1 %>, <%= @joke.input_text2 %></p>
-    <p><strong>まぜた分野:</strong> <%= @joke.category.name %></p>
+    <p><strong>まぜたじかんわり:</strong> <%= @joke.category.name %></p>
   </div>
 
   <div class="home-button">
-    <%= link_to 'ホームに戻ってまた作る', root_path, class: 'home-link' %>
+    <%= link_to 'ホームにもどってまたつくる', root_path, class: 'home-button' %>
   </div>
 </div>
