@@ -11,13 +11,14 @@ body {
   justify-content: space-between;
   padding: 60px 60px 0 60px;
   height: calc(100vh - 60px);
+  background-color: #ffffff;
 }
 
 .form-container {
   width: 30%;
   flex: 0 0 40%;
   padding: 10px 40px 40px; 
-  background-color: #f9f9f9;
+  background-color: #d9f8ef;
   border-right: 1px solid #ccc;
   height: 100%;
   overflow: hidden;
@@ -46,11 +47,13 @@ body {
   padding: 20px;
   height: calc(100vh - 60px);
   overflow-y: auto;
+  background-color: #ffffff;
 }
 
 .jokes-list {
   list-style-type: none;
   padding: 0;
+  
 }
 
 .joke-item {
@@ -58,17 +61,25 @@ body {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #d9f8ef;
 }
 
 .joke-link {
-  display: block;
-  margin-top: 10px;
-  color: #007bff;
-  text-decoration: none;
+  text-decoration: none; 
+  background-color: #3945f1;
+  color: #fff;
+  padding: 0.5em 1em;
+  margin-right: 100px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.1s, transform 0.1s;
 }
 
 .joke-link:hover {
-  text-decoration: underline;
+  background-color: #0eaaec;  
+  transform: scale(1.05) !important;
 }
 
 .field {

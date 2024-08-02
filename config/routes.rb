@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
-  resources :jokes, only: [:create, :show, :destroy] do
-    resources :ai_jokes, only: [:show]
+  resources :users, only: [] do
+    resources :jokes, only: [:index, :show, :destroy]
   end
 
-  resources :users, only: [] do
-    resources :jokes, only: [:index], controller: 'user_jokes'
+  resources :jokes, only: [:create, :show, :destroy, :index] do
+    resources :ai_jokes, only: [:show]
   end
 end
