@@ -25,6 +25,7 @@ class JokesController < ApplicationController
 
   def show
     @ai_joke = AiJoke.find_by(joke_id: params[:id])
+    @user_jokes = current_user.ai_jokes if user_signed_in?
   end
 
   private

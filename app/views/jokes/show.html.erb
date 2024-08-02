@@ -6,7 +6,20 @@
 </head>
 <body>
   <%= render "shared/header" %>
-  <main>
+  <main class="main-container">
+    <div class="sidebar">
+      <h2>つくったものいちらん</h2>
+      <% if @user_jokes.present? %>
+      <ul>
+        <% @user_jokes.each do |joke| %>
+          <li><%= link_to joke.generated_joke, joke_path(joke) %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>まだつくったアイデアがありません。</p>
+      <% end %>
+    </div>
+    <div class="content">
 <div class="joke-detail-container">
   <div class="joke-frame">
     <h1>つくったじゆうけんきゅうのアイデア</h1>
