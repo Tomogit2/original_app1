@@ -17,8 +17,6 @@ header {
 
 nav {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
 }
@@ -27,9 +25,20 @@ nav {
   display: flex;
   align-items: center;
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 0 20px;
   padding: 0;
   width: 100%;
+}
+
+.left-items,
+.right-items {
+  display: flex;
+  align-items: center;
+}
+
+.login-signup {
+  display: flex;
+  align-items: center;
 }
 
 .nav-list li {
@@ -39,12 +48,15 @@ nav {
 
 .banner-img {
   margin-right: auto;
-  margin-left: 50px;
 }
 
-.logout-item,
-.login-item {
-  margin-left: auto;
+.login-signup {
+  display: flex;
+  align-items: center;
+}
+
+.login-signup .signup-item {
+  margin-left: 0;
 }
 
 nav li a {
@@ -52,8 +64,8 @@ nav li a {
   color: #007bff;
 }
 
-nav li a:hover {
-  text-decoration: underline;
+.user-info {
+  margin-right: 20px;
 }
 
 .user-link {
@@ -67,7 +79,7 @@ nav li a:hover {
   color: red;
 }
 
-.logout-button {
+.logout-button, .login-button, .signup-button {
   background-color: #3945f1;
   color: #fff;
   padding: 0.5em 1em;
@@ -79,12 +91,16 @@ nav li a:hover {
   transition: background-color 0.1s, transform 0.1s;
 }
 
-.logout-button:hover {
+.logout-button:hover, .login-button:hover, .signup-button:hover {
   background-color: #0eaaec;
   text-decoration: none; 
   transform: scale(1.05);
 }
 
 nav ul li:last-child {
-  margin-right: 0;
+  margin-right: 20px;
+}
+
+.login-button {
+  margin-right: 20px ;
 }

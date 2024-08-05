@@ -6,6 +6,7 @@
           <img src="<%= asset_path('banner.png') %>" alt="ホームへのリンク" class="header-banner">
         </a>
       </li>
+      <li class="right-items">
       <% if user_signed_in? %>
         <li class="user-info">
           <%= link_to "#{current_user.nickname}さんのマイページはこちら", user_jokes_path(current_user), class: 'user-link' %>
@@ -14,8 +15,12 @@
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-button' %>
         </li>
       <% else %>
+      <div class="login-signup">
         <li class="login-item">
-          <%= link_to 'ログイン', new_user_session_path %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'login-button' %>
+        </li>
+        <li class="signup-item">
+          <%= link_to '新規登録', new_user_registration_path, class: 'signup-button' %>
         </li>
       <% end %>
     </ul>
