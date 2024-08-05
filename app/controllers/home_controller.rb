@@ -1,6 +1,7 @@
-  class HomeController < ApplicationController
+class HomeController < ApplicationController
   def index
-    @joke = Joke.new
-    @ai_jokes = AiJoke.all
+    @jokes = Joke.all
+    @ai_jokes = AiJoke.includes(:user, :joke)
+    @ai_joke = @ai_jokes.first
   end
 end

@@ -1,17 +1,15 @@
 class JokesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :show, :destroy]
-  before_action :set_joke, only: [:show, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :destroy]
+  before_action :set_joke, only: [:destroy]
+  before_action :correct_user, only: [:destroy]
 
   def index
-    @user = User.find(params[:user_id])
-    @jokes = @user.jokes
-
-    if params[:joke_id]
-      @joke = @jokes.find(params[:joke_id])
-      @ai_joke = @joke.ai_joke
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @jokes = @user.jokes.includes(:category, :ai_jokes)
+      @ai_jokes = AiJoke.where(user_id: params[:user_id])
     else
-      @joke = nil
-      @ai_joke = nil
+      @jokes = Joke.all.includes(:category, :ai_jokes)
     end
   end
 
@@ -30,8 +28,13 @@ class JokesController < ApplicationController
   end
   
   def show
-    @user = @joke.user
-    @user_jokes = @user.jokes
+    @joke = Joke.find(params[:id])
+    @ai_joke = AiJoke.find_by(joke_id: @joke.id)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream 
+    end
   end
 
   def destroy
@@ -57,7 +60,7 @@ class JokesController < ApplicationController
         model: 'gpt-4o-mini',
         messages: [
           { role: "system", content: "You are a funny assistant." },
-          { role: "user", content: "Create a science joke in the category #{category} with the following words: #{input_text1}, #{input_text2}" }
+          { role: "user", content: "くすっと笑える楽しさを重視して、#{category}を軸にした考え方を用いて#{input_text1}, #{input_text2}をお題にして「小学生向けに身近な謎に対する研究題目」を考えてください。語尾は「～について考えてみるのは面白いんじゃない？」としてください" }
         ],
         max_tokens: 100
       }

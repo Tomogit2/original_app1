@@ -1,12 +1,11 @@
+# config/routes.rb
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
   resources :users, only: [] do
-    resources :jokes, only: [:index, :show, :destroy]
+    resources :jokes, only: [:index]
   end
-
-  resources :jokes, only: [:create, :show, :destroy, :index] do
-    resources :ai_jokes, only: [:show]
-  end
+  resources :jokes, only: [:index, :show]
+  resources :jokes, only: [:index, :create, :destroy]
 end

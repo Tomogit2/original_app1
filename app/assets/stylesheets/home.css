@@ -1,5 +1,10 @@
 body {
-  font-family: 'Arial', sans-serif;
+  background-color: #f0f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .center-text {
@@ -8,52 +13,41 @@ body {
 
 .main-container {
   display: flex;
-  justify-content: space-between;
   padding: 60px 60px 0 60px;
-  height: calc(100vh - 60px);
-  background-color: #ffffff;
+  height: calc(100vh - 60px);  
 }
 
 .form-container {
+  flex: 1;
   width: 30%;
-  flex: 0 0 40%;
-  padding: 10px 40px 40px; 
+  padding: 20px;
   background-color: #d9f8ef;
   border-right: 1px solid #ccc;
-  height: 100%;
-  overflow: hidden;
-  position: fixed;
-  top: 60px;
-  bottom: 0;
-  left: 0;
-}
-
-.field {
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.field label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.jokes-container {
-  margin-left: 30%;
-  padding: 20px;
-  height: calc(100vh - 60px);
   overflow-y: auto;
-  background-color: #ffffff;
+}
+
+.content-container {
+  display: flex;
+  flex: 3;
+  overflow: hidden;
+}
+
+.jokes-list-container {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.joke-detail-container {
+  flex: 2;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .jokes-list {
   list-style-type: none;
   padding: 0;
-  
 }
 
 .joke-item {
@@ -65,11 +59,10 @@ body {
 }
 
 .joke-link {
-  text-decoration: none; 
+  text-decoration: none;
   background-color: #3945f1;
   color: #fff;
   padding: 0.5em 1em;
-  margin-right: 100px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -78,8 +71,8 @@ body {
 }
 
 .joke-link:hover {
-  background-color: #0eaaec;  
-  transform: scale(1.05) !important;
+  background-color: #0eaaec;
+  transform: scale(1.05);
 }
 
 .field {
@@ -93,7 +86,7 @@ body {
 }
 
 .field input,
-.field select  {
+.field select {
   width: calc(100% - 25px);
   height: 40px;
   padding: 0.5em;
@@ -118,6 +111,61 @@ body {
 }
 
 .actions input[type="submit"]:hover {
+  background-color: #0eaaec;
+  transform: scale(1.05);
+}
+
+.joke-frame {
+  border: 5px solid #f2b933;
+  background-color: #fff7ee;
+  padding: 20px;
+  border-radius: 20px;
+  width: 80%;
+  margin-bottom: 5px;
+}
+
+.no_show_text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.joke-generated {
+  font-size: 1.5em;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #aaa;
+}
+
+.joke-actions {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.joke-info {
+  width: 80%;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+.delete-button, .home-button {
+  background-color: #3945f1;
+  color: #fff;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.1s, transform 0.1s;
+}
+
+.delete-button:hover, .home-button:hover {
   background-color: #0eaaec;
   transform: scale(1.05);
 }

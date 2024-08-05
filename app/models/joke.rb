@@ -3,8 +3,8 @@ class Joke < ApplicationRecord
   belongs_to_active_hash :category
 
   belongs_to :user
-  has_many :ai_jokes, dependent: :destroy
-  
+  has_one :ai_joke, dependent: :destroy
+
   validates :category_id, presence: true
   validates :input_text1, presence: true
   validates :input_text2, presence: true

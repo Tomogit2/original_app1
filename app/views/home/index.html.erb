@@ -31,18 +31,31 @@
       <% end %>
     </div>
 
-    <div class="jokes-container">
+    <div class="content-container">
+      <div class="jokes-list-container">
       <h2>つくったじゆうけんきゅうのアイデア</h2>
       <% if @ai_jokes.present? %>
         <ul class="jokes-list">
           <% @ai_jokes.each do |ai_joke| %>
+          <div class="joke-info">
             <li class="joke-item">
               <p><%= ai_joke.generated_joke %></p>
-              <%= link_to 'くわしくみる', joke_path(ai_joke.joke), class: 'joke-link' %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
+              <p><strong>つくったとき:</strong> <%= ai_joke.joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              <p><strong>つくったひと:</strong> <%= link_to "#{ai_joke.joke.user.nickname}さん", user_jokes_path(ai_joke.joke.user), class: 'user-link' %></p>
+              <p><strong>まぜたもの:</strong> <%= ai_joke.joke.input_text1 %>, <%= ai_joke.joke.input_text2 %></p>
+              <p><strong>まぜたじかんわり:</strong> <%= ai_joke.joke.category.name %></p>
+              </li>
+
+             <% if ai_joke.user == current_user %>
+                  <%= link_to 'けす', joke_path(ai_joke.joke), method: :delete, data: { confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
+            <% end %>
+          </div>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>じゆうけんきゅうのアイデアがありません。</p>
+        <% end %>
+      </div>
     </div>
   </main>
 </body>

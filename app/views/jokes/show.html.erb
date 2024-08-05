@@ -1,0 +1,15 @@
+<div class="joke-frame">
+  <h1>つくったじゆうけんきゅうのアイデア</h1>
+  <p><%= @ai_joke.generated_joke %></p>
+</div>
+
+<div class="joke-actions">
+  <%= link_to 'けす', joke_path(@joke), data: { turbo_method: :delete, confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
+</div>
+
+<div class="joke-info">
+  <p><strong>つくったとき:</strong> <%= @joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  <p><strong>つくったひと:</strong> <%= link_to "#{@joke.user.nickname}さん", user_jokes_path(@joke.user), class: 'user-link' %></p>
+  <p><strong>まぜたもの:</strong> <%= @joke.input_text1 %>, <%= @joke.input_text2 %></p>
+  <p><strong>まぜたじかんわり:</strong> <%= @joke.category.name %></p>
+</div>
