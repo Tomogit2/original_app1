@@ -6,11 +6,11 @@ class JokesController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @jokes = @user.jokes.includes(:category, :ai_jokes)
-      @ai_jokes = AiJoke.where(user_id: params[:user_id])
+      @jokes = @user.jokes.includes(:category, :ai_jokes).order(created_at: :desc)
+      @ai_jokes = AiJoke.where(user_id: params[:user_id]).order(created_at: :desc)
     else
       @user = current_user
-      @jokes = Joke.all.includes(:category, :ai_jokes)
+      @jokes = Joke.all.includes(:category, :ai_jokes).order(created_at: :desc)
       @ai_jokes = AiJoke.all
     end
   end
