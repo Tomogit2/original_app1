@@ -1,0 +1,23 @@
+<div class="content-wrapper">
+      <h2 class="center-text">きみだけのじゆうけんきゅうのアイデアをつくろう</h2>
+      <%= form_with scope: :joke, local: true, url: jokes_path do |form| %>
+        <div class="field">
+          <%= form.label :category_id, "きみのすきなじかんわりをおしえてね" %>
+          <%= form.collection_select :category_id, Category.all, :id, :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :input_text1, "すきなものをおしえてね" %>
+          <%= form.text_field :input_text1 %>
+        </div>
+
+        <div class="field">
+          <%= form.label :input_text2, "もうひとつすきなものをおしえてね" %>
+          <%= form.text_field :input_text2 %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "じゆうけんきゅうの\nアイデアをつくる" %>
+        </div>
+      <% end %>
+      </div>

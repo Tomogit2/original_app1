@@ -1,4 +1,4 @@
-<h2>つくったじゆうけんきゅうのアイデア</h2>
+<h2><%= @user.nickname %>さんがつくったじゆうけんきゅうのアイデア</h2>
 <% if @ai_jokes.present? %>
   <ul class="jokes-list">
     <% @ai_jokes.each do |ai_joke| %>

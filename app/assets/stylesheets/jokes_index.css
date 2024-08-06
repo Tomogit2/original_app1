@@ -1,0 +1,60 @@
+.main-container {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  padding-top: 60px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-button-container {
+  margin-top: 20px;
+}
+
+.home-button {
+  background-color: #3945f1;
+  color: #fff;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+  background-color: #0eaaec;
+  transform: scale(1.05);
+}
+
+.joke-frame {
+  border: 5px solid #f2b933;
+  background-color: #fff7ee;
+  padding: 20px;
+  border-radius: 20px;
+  width: 80%;
+  margin-bottom: 5px;
+}
+
+.joke-generated {
+  font-size: 1.5em;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #aaa;
+}
+
+.joke-info {
+  width: 100%;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1em;
+}

@@ -5,35 +5,19 @@
     <%= stylesheet_link_tag 'home', media: 'all' %>
 </head>
 <body>
-  <%= render "shared/header" %>  
+  <header>
+    <%= render "shared/header" %>
+  </header>
   <main class="main-container">
     <div class="form-container">
-      <h2 class="center-text">きみだけのじゆうけんきゅうのアイデアをつくろう</h2>
-      <%= form_with model: @joke, local: true, url: jokes_path do |form| %>
-        <div class="field">
-          <%= form.label :category_id, "きみのすきなじかんわりをおしえてね" %>
-          <%= form.collection_select :category_id, Category.all, :id, :name %>
-        </div>
-
-        <div class="field">
-          <%= form.label :input_text1, "すきなものをおしえてね" %>
-          <%= form.text_field :input_text1 %>
-        </div>
-
-        <div class="field">
-          <%= form.label :input_text2, "もうひとつすきなものをおしえてね" %>
-          <%= form.text_field :input_text2 %>
-        </div>
-
-        <div class="actions">
-          <%= form.submit "じゆうけんきゅうのアイデアをつくる" %>
-        </div>
-      <% end %>
+      <div class="form-container">
+      <%= render "shared/form" %>
+    </div>
     </div>
 
     <div class="content-container">
       <div class="jokes-list-container">
-      <h2>つくったじゆうけんきゅうのアイデア</h2>
+      <h2>みんなのじゆうけんきゅうのアイデア</h2>
       <% if @ai_jokes.present? %>
         <ul class="jokes-list">
           <% @ai_jokes.each do |ai_joke| %>
@@ -57,6 +41,7 @@
         <% end %>
       </div>
     </div>
+  </div>
   </main>
 </body>
 </html>

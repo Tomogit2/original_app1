@@ -2,17 +2,19 @@
 <html>
 <head>
     <title>つくったじゆうけんきゅうのアイデア詳細</title>
-    <%= stylesheet_link_tag 'jokes_show', media: 'all' %>
+    <%= stylesheet_link_tag 'jokes_index', media: 'all' %>
 </head>
 <body>
+  <header>
     <%= render "shared/header" %>
+  </header>
     <main class="main-container">
-        <div class="sidebar">
+      <div class="form-container">
+      <%= render "shared/form" %>
+    </div>
+        <div class="content">
           <%= render "shared/joke_detail" %> 
-            
-        </div>
-
-            <div class="home-button">
+            <div class="home-button-container">
                 <%= link_to 'ホームにもどってアイデアをつくる', root_path, class: 'home-button' %>
             </div>
         </div>

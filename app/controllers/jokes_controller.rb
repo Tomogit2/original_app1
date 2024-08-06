@@ -9,7 +9,9 @@ class JokesController < ApplicationController
       @jokes = @user.jokes.includes(:category, :ai_jokes)
       @ai_jokes = AiJoke.where(user_id: params[:user_id])
     else
+      @user = current_user
       @jokes = Joke.all.includes(:category, :ai_jokes)
+      @ai_jokes = AiJoke.all
     end
   end
 
@@ -24,7 +26,7 @@ class JokesController < ApplicationController
         flash.now[:alert] = 'アイデアがつくれませんでした。'
       end
     end
-    redirect_to jokes_path
+    redirect_to root_path
   end
   
   def show
@@ -60,7 +62,9 @@ class JokesController < ApplicationController
         model: 'gpt-4o-mini',
         messages: [
           { role: "system", content: "You are a funny assistant." },
-          { role: "user", content: "くすっと笑える楽しさを重視して、#{category}を軸にした考え方を用いて#{input_text1}, #{input_text2}をお題にして「小学生向けに身近な謎に対する研究題目」を考えてください。語尾は「～について考えてみるのは面白いんじゃない？」としてください" }
+          { role: "user", content: "あなたは学ぶことに対する興味を引き出すことを目指し「小学生向けに身近な謎に対する研究題目」を考えるよう
+          訓練されたAIです。くすっと笑える楽しさを添えて#{category}の科目を軸に#{input_text1}, #{input_text2}にちなんだ自由研究の面白い案
+          を、ダジャレやジョークを交えて100文字程度で、語尾は「～について考えてみるのは面白いんじゃない？」としてください" }
         ],
         max_tokens: 100
       }
