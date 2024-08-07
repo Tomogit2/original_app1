@@ -12,7 +12,7 @@ private
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'ENV['ORIGINAL APP1_BASIC_AUTH_USER']' && password == 'ENV['ORIGINAL APP1_BASIC_AUTH_PASSWORD']'
+    username == ENV['ORIGINAL_APP1_BASIC_AUTH_USER'] && password == ENV['ORIGINAL_APP1_BASIC_AUTH_PASSWORD']
     end
   end
 end
