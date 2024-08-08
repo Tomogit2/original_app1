@@ -30,3 +30,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .env
+app/assets/images/suika.png.png:Zone.Identifier
+app/assets/images/自由研究の夢.png:Zone.Identifier
