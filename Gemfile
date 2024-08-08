@@ -78,4 +78,6 @@ gem 'http'
 gem 'faraday'
 gem 'active_hash'
 
-
+group :production do
+  gem 'unicorn', '6.1.0'
+end
