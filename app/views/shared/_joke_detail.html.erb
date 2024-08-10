@@ -1,11 +1,10 @@
-<h2><%= @user.nickname %>さんがつくったじゆうけんきゅうのアイデア</h2>
-<% if @ai_jokes.present? %>
+
   <ul class="jokes-list">
     <% @ai_jokes.each do |ai_joke| %>
       <div class="joke-info">
         <li class="joke-item">
           <p><%= ai_joke.generated_joke %></p>
-          
+          <div class="joke-details">
           <p><strong>つくったとき:</strong>
           <% if ai_joke.joke.present? %>
             <%= ai_joke.joke.created_at.strftime("%Y-%m-%d %H:%M") %>
@@ -26,12 +25,13 @@
           <p><strong>まぜたじかんわり:</strong> <%= ai_joke.joke.category.name %></p>
 
           <% if ai_joke.user == current_user %>
-            <%= link_to 'けす', joke_path(ai_joke.joke), method: :delete, data: { confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
+            <div class="button-container">
+              <%= link_to 'けす', joke_path(ai_joke.joke), method: :delete, data: { confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
+            </div>
           <% end %>
+          </div>
         </li>
       </div>
     <% end %>
   </ul>
-<% else %>
-  <p>まだつくったアイデアがありません。つくってみよう。</p>
-<% end %>
+

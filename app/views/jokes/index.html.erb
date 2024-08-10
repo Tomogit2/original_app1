@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>つくったじゆうけんきゅうのアイデア詳細</title>
-    <%= stylesheet_link_tag 'jokes', media: 'all' %>
+    <%= stylesheet_link_tag 'shared/jokes', media: 'all' %>
 </head>
 <body>
   <header>
@@ -14,10 +14,20 @@
     </div>
 
     <div class="content-container">
-      <%= render "shared/joke_detail" %> 
+      <div class="user-jokes-list-container">
+      <h2><%= @user.nickname %>さんがつくったじゆうけんきゅうのアイデア</h2>
         <div class="home-button-container">
           <%= link_to 'みんなのアイデアをみる', root_path, class: 'home-button' %>
         </div>
+    </div>
+
+    <div class="joke-list">
+      <% if @ai_jokes.present? %>
+      <%= render "shared/joke_detail", ai_jokes: @ai_jokes %> 
+      <% else %>
+        <p>まだつくったアイデアがありません。つくってみよう。</p>
+      <% end %>
+      
     </div>
     </main>
 </body>

@@ -22,13 +22,13 @@ body {
   width: 100%;
 }
 
-.field label {
+.form-container .field label {
   display: block;
   margin-bottom: 0.5em;
   color: #333;
 }
 
-.field input,
+.content-wrapper .field input,
 .field select {
   width: calc(100% - 25px);
   height: 40px;
