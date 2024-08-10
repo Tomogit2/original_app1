@@ -1,7 +1,6 @@
 .form-container {
   flex: 1;
-  background-color: #d9f8ef;
-  border-right: 1px solid #ccc;
+  background-color: #d9f8ef;  
   overflow-y: auto;
   padding: 0;
 }

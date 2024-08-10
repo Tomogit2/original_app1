@@ -8,11 +8,9 @@
   <header>
     <%= render "shared/header" %>
   </header>
-  <main class="main-container">
-    <div class="form-container">
+    <main class="main-container">
       <div class="form-container">
-      <%= render "shared/form" %>
-    </div>
+        <%= render "shared/form" %>
     </div>
 
     <div class="content-container">
@@ -23,21 +21,24 @@
           <% @ai_jokes.each do |ai_joke| %>
           <div class="joke-info">
             <li class="joke-item">
-              <p><%= ai_joke.generated_joke %></p>
-              <p><strong>つくったとき:</strong> <%= ai_joke.joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-              <p><strong>つくったひと:</strong> <%= link_to "#{ai_joke.joke.user.nickname}さん", user_jokes_path(ai_joke.joke.user), class: 'user-link' %></p>
-              <p><strong>まぜたもの:</strong> <%= ai_joke.joke.input_text1 %>, <%= ai_joke.joke.input_text2 %></p>
-              <p><strong>まぜたじかんわり:</strong> <%= ai_joke.joke.category.name %></p>
-              </li>
-
-             <% if ai_joke.user == current_user %>
+              <p class="joke-text"><%= ai_joke.generated_joke %></p>
+              <div class="joke-details">
+                <p><strong>つくったとき:</strong> <%= ai_joke.joke.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                <p><strong>つくったひと:</strong> <%= link_to "#{ai_joke.joke.user.nickname}さん", user_jokes_path(ai_joke.joke.user), class: 'user-link' %></p>
+                <p><strong>まぜたもの:</strong> <%= ai_joke.joke.input_text1 %>, <%= ai_joke.joke.input_text2 %></p>
+                <p><strong>まぜたじかんわり:</strong> <%= ai_joke.joke.category.name %></p>
+              <% if ai_joke.user == current_user %>
+                <div class="button-container">
                   <%= link_to 'けす', joke_path(ai_joke.joke), method: :delete, data: { confirm: 'ほんとうにけしてもいい？' }, class: 'delete-button' %>
-            <% end %>
+                </div>
+              <% end %>
+              </div>
+            </li>
           </div>
             <% end %>
           </ul>
         <% else %>
-          <p>じゆうけんきゅうのアイデアがありません。</p>
+          <p>じゆうけんきゅうのアイデアがありません。つくってみよう。</p>
         <% end %>
       </div>
     </div>

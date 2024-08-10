@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>つくったじゆうけんきゅうのアイデア詳細</title>
-    <%= stylesheet_link_tag 'jokes_index', media: 'all' %>
+    <%= stylesheet_link_tag 'jokes', media: 'all' %>
 </head>
 <body>
   <header>
@@ -12,12 +12,13 @@
       <div class="form-container">
       <%= render "shared/form" %>
     </div>
-        <div class="content">
-          <%= render "shared/joke_detail" %> 
-            <div class="home-button-container">
-                <%= link_to 'みんなのアイデアをみる', root_path, class: 'home-button' %>
-            </div>
+
+    <div class="content-container">
+      <%= render "shared/joke_detail" %> 
+        <div class="home-button-container">
+          <%= link_to 'みんなのアイデアをみる', root_path, class: 'home-button' %>
         </div>
+    </div>
     </main>
 </body>
 </html>

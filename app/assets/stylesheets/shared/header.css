@@ -11,6 +11,11 @@ header {
   z-index: 1000;
 }
 
+.header-icon {
+  height: 50px;
+  margin-right: 10px;
+}
+
 .header-banner {
   height: 50px;
 }
