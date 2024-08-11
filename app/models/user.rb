@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :ai_jokes, dependent: :destroy
 
   validates :nickname, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 end
