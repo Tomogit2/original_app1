@@ -1,21 +1,19 @@
 body {
-  background-color: #f0f8ff;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  overflow-y: auto;
   margin: 0;
 }
 
 .signup-container {
-  background: #fff;
-  padding: 0em 5em 5em 5em;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 5em;
   max-width: 500px;
   width: 100%;
   height: 95vh; 
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,10 +85,17 @@ rt {
   margin-left: 0.2em;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .my-link-class {
   border: none;
   background-color: #48e7ed;
   padding: 20px 10px 10px 10px;
+  margin-left: 1em;
   border-radius: 40px;
   display: inline-block;
   transition: background-color 0.3s, transform 0.3s;
