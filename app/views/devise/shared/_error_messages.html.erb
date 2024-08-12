@@ -1,20 +1,9 @@
 <% if resource.errors.any? %>
-
-<p>デバッグ: @userのエラーが存在します。<%= @user.errors.full_messages.inspect %></p>
-
- <p>デバッグ: ユーザーのエラーが存在します。<%= @user.errors.full_messages.inspect %></p>
 <div class="signup-error-messages-active signin-error-messages-active">
-  <p>テストメッセージ: ここにエラーが表示されます</p>
   <ul>
     <% resource.errors.full_messages.each do |message| %>
-    <p>テストメッセージ: ここにエラーが表示されます２</p>
     <li class='error-message'><%= message %></li>
     <% end %>
   </ul>
-</div>
-<% else %>
-  <p>デバッグ: エラーは存在しません。</p>
-<%# end %>
-<div class="signup-error-messages signin-error-messages">
 </div>
 <% end %>
