@@ -26,6 +26,30 @@ body {
   color: #333;
 }
 
+.signin-error-messages {
+  position: relative;
+  color: rgb(249, 167, 167);
+  padding: 10px;
+  background-color: #ffe6e6;
+  visibility: hidden;
+}
+
+.flash-alert.signin-error-messages-active {
+  visibility: visible;
+  display: block;
+  margin: 0;
+  color: inherit;
+  border: 2px solid pink;
+  border-radius: 10px;
+  background-color: #ffe6e6;
+  list-style-type: none;
+  display: block; 
+}
+
+.flash-alert.signin-error-messages-active p {
+  margin: 10px 20px;
+}
+
 .field {
   margin-bottom: 3em;
 }

@@ -41,7 +41,9 @@ body {
 }
 
 .signup-error-messages-active h2, 
-.signup-error-messages-active li {
+.signup-error-messages-active li,
+.signin-error-messages-active h2, 
+.signin-error-messages-active li {
   margin: 0;
   padding: 0;
   color: inherit;
@@ -52,7 +54,8 @@ body {
   list-style-type: none; 
 }
 
-.signup-error-messages-active {
+.signup-error-messages-active,
+.signin-error-messages-active {
   visibility: visible;
 }
 

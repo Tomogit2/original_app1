@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'registration', media: 'all' %>
+
 <div class="login-container">
   <div class="login-box">
     <h2><ruby>ログイン<rt>ろぐいん</rt></ruby></h2>
@@ -18,6 +20,14 @@
           <%= f.check_box :remember_me %>
         </div>
       <% end %>
+
+      <div class="signin-error-messages">
+        <% if flash[:alert].present? %>
+          <div class="flash-alert signin-error-messages-active">
+            <p><%= flash[:alert] %></p>
+          </div>
+        <% end %>
+      </div>
 
       <div class="actions">
         <button type="submit"><ruby>ログイン<rt>ろぐいん</rt></ruby></button>
