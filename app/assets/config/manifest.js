@@ -3,3 +3,4 @@
 //= link application.js
 //= link_directory ../../../vendor/javascript .js
 //= link shared/jokes.css
+//= link application.css
