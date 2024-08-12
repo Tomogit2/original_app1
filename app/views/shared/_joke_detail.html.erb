@@ -2,6 +2,11 @@
   <ul class="jokes-list">
     <% @ai_jokes.each do |ai_joke| %>
       <div class="joke-info">
+
+        <% if ai_joke.joke.new_joke? %>
+          <span class="new-label">New</span>
+        <% end %>
+
         <li class="joke-item">
           <p><%= ai_joke.generated_joke %></p>
           <div class="joke-details">

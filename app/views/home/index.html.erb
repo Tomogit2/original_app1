@@ -11,17 +11,19 @@
     <main class="main-container">
       <div class="form-container">
         <%= render "shared/form" %>
-    </div>
+      </div>
 
     <div class="content-container">
       <div class="jokes-list-container">
       <h2>みんなのじゆうけんきゅうのアイデア</h2>
       <% if @ai_jokes.present? %>
-      <%= render "shared/joke_detail", ai_jokes: @ai_jokes %> 
-
-        <% else %>
-          <p>じゆうけんきゅうのアイデアがありません。つくってみよう。</p>
+        <% @ai_jokes.each do |ai_joke| %>
+          <%= render "shared/joke_detail", joke: ai_joke.joke, ai_joke: ai_joke %>
         <% end %>
+
+      <% else %>
+        <p>じゆうけんきゅうのアイデアがありません。つくってみよう。</p>
+      <% end %>
       </div>
     </div>
   </div>

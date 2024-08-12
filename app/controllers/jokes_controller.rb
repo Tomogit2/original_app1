@@ -64,7 +64,7 @@ class JokesController < ApplicationController
           { role: "system", content: "You are a funny assistant." },
           { role: "user", content: "あなたは学ぶことに対する興味を引き出すことを目指し「小学生向けに身近な謎に対する研究題目」を考えるよう
           訓練されたAIです。くすっと笑える楽しさを添えて#{category}の科目を軸に#{input_text1}, #{input_text2}にちなんだ自由研究の面白い案
-          を、ダジャレやジョークを交えて100文字程度で、語尾は「～について考えてみるのは面白いんじゃない？」としてください" }
+          を、ダジャレやジョークを交えて100文字程度でタイトルとその詳細を発話してください" }
         ],
         max_tokens: 100
       }
