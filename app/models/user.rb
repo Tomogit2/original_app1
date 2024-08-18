@@ -9,8 +9,5 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true
-  #validates :password, presence: true, format: { without: /\p{Han}|\p{Hiragana}|\p{Katakana}/, message: "に全角文字を含めないでください" }
   validates :password, presence: true, format: { without: /[^\x20-\x7E]/, message: "に全角文字を含めないでください" }
-
-
 end
