@@ -1,3 +1,50 @@
+# すきなもの、まぜて・・・？なつやすみのじゆうけんきゅうアイデアマシーン
+
+## アプリケーションの概要
+このアプリは、小学校低学年の児童向けに、夏休みの自由研究アイデアを提供するWebアプリケーションです。ユーザーが選んだジャンルと任意のキーワードを入力すると、AIが自由研究のアイデアを生成します。子どもたちが自発的に学習に取り組むきっかけを作ることを目指しています。
+
+## 使用技術
+
+- **フロントエンド**: HTML, CSS
+- **バックエンド**: Ruby on Rails 7
+- **データベース**: MySQL (RDS: MariaDB)
+- **インフラ**: AWS (EC2, RDS)
+- **その他**: GitHub, openAI API連携, Visual Studio Code (VSCode)
+
+### 開発環境
+- **OS**: Windows 11
+- **WSL**: Windows Subsystem for Linux
+- **ターミナル**: PowerShell 7, コマンドプロンプト, AWS CloudShell
+- **テキストエディタ**: Vim, VSCode
+- **データベース管理**: DBeaver
+- **AWS CLI**: Amazon Web Services Command Line Interface
+- **Linux**: Ubuntu
+
+## インストール方法
+
+1. リポジトリをクローンします。
+```bash
+git clone https://github.com/Tomogit2/original_app1
+
+2. 必要なGemをインストールします。
+```bash
+bundle install
+
+3. データベースを作成します。
+```bash
+rails db:create db:migrate
+
+4. 環境変数を設定します。
+```bash
+export OPENAI_API_KEY=your_api_key
+
+5. サーバーを起動します。
+```bash
+rails server
+
+6. ブラウザで`http://localhost:3000`にアクセスし、アプリケーションが動作していることを確認します。
+
+
 # テーブル設計
 
 ## users テーブル
