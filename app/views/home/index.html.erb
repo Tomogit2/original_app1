@@ -17,10 +17,11 @@
       <div class="jokes-list-container">
       <h2>みんなのじゆうけんきゅうのアイデア</h2>
       <% if @ai_jokes.present? %>
+        <ul class="jokes-list">
         <% @ai_jokes.each do |ai_joke| %>
           <%= render "shared/joke_detail", joke: ai_joke.joke, ai_joke: ai_joke %>
         <% end %>
-
+</ul>
       <% else %>
         <p>じゆうけんきゅうのアイデアがありません。つくってみよう。</p>
       <% end %>
