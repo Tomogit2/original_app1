@@ -66,7 +66,7 @@ class JokesController < ApplicationController
           訓練されたAIです。くすっと笑える楽しさを添えて#{category}の科目を軸に#{input_text1}, #{input_text2}にちなんだ自由研究の面白い案
           を、ダジャレやジョークを交えて100文字程度でタイトルとその詳細を発話してください" }
         ],
-        max_tokens: 100
+        max_tokens: 200
       }
     )
 
