@@ -123,18 +123,19 @@ OpenAIやGithubの公式ドキュメントを参考にしてリクエストと�
 
 各テーブルは、外部キーを介して他のテーブルと連携し、アプリケーション内のデータの整合性と一貫性を確保しています。
 ## 開発環境
+## 開発環境
 
 | 項目                   | 使用技術                                      |
 | ---------------------- | --------------------------------------------- |
-| フロントエンド         | HTML, CSS                                     |
+| フロントエンド         | HTML<br>CSS                                   |
 | バックエンド           | Ruby on Rails 7                               |
 | データベース           | MySQL (RDS: MariaDB)                          |
 | データベース管理       | DBeaver                                       |
 | インフラ               | AWS (EC2, RDS)                                |
 | OS                    | Windows 11                                    |
 | バージョン管理         | GitHub                                        |
-| エディタ               | Visual Studio Code (VSCode), Vim              |
-| ターミナル/シェル      | PowerShell 7, コマンドプロンプト, AWS CloudShell |
+| エディタ               | Visual Studio Code (VSCode)<br>Vim            |
+| ターミナル/シェル      | PowerShell 7<br>コマンドプロンプト<br>AWS CloudShell |
 | クラウドサービス管理   | AWS CLI (Amazon Web Services Command Line Interface) |
 | API                   | openAI API                                    |
 | Linux環境             | Ubuntu (WSL - Windows Subsystem for Linux)    |
