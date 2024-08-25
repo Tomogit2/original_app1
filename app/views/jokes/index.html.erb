@@ -23,7 +23,9 @@
 
     <div class="joke-list">
       <% if @ai_jokes.present? %>
-      <%= render "shared/joke_detail", ai_jokes: @ai_jokes %> 
+      <% @ai_jokes.each do |ai_joke| %>
+      <%= render "shared/joke_detail", ai_joke: ai_joke %>
+    <% end %> 
       <% else %>
         <p>まだつくったアイデアがありません。つくってみよう。</p>
       <% end %>
