@@ -15,4 +15,5 @@
   padding-top: 70px;
   height: calc(100vh - 56px);  
   background-color: #ffffff;
+  overflow-y: auto;
 }
