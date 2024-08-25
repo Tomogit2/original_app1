@@ -21,16 +21,16 @@
         </div>
     </div>
 
-    <div class="joke-list">
-      <% if @ai_jokes.present? %>
+    <% if @ai_jokes.present? %>
+        <ul class="jokes-list">
       <% @ai_jokes.each do |ai_joke| %>
-      <%= render "shared/joke_detail", ai_joke: ai_joke %>
+      <%= render "shared/joke_detail", joke: ai_joke.joke, ai_joke: ai_joke %>
     <% end %> 
+    </ul>
       <% else %>
         <p>まだつくったアイデアがありません。つくってみよう。</p>
       <% end %>
-      
-    </div>
+      </div>
     </main>
 </body>
 </html>
